@@ -3,12 +3,14 @@ using UnityEngine.AI;
 
 public class Actor : MonoBehaviour
 {
-    [SerializeField] private GameObject goal;
+    private GameObject goal;
     private NavMeshAgent navMeshAgent;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        goal = GameObject.FindGameObjectWithTag("Player");
 
         if (navMeshAgent != null && goal != null)
         {
