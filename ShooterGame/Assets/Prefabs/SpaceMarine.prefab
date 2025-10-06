@@ -603,6 +603,7 @@ GameObject:
   - component: {fileID: 5338588794405194220}
   - component: {fileID: 59118927754628869}
   - component: {fileID: 8786376107353650236}
+  - component: {fileID: -3140285947540450502}
   m_Layer: 0
   m_Name: SpaceMarine
   m_TagString: Player
@@ -659,13 +660,36 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2.8
-  m_Radius: 0.5
+  m_Height: 12
+  m_Radius: 4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 1.38, z: 0}
+  m_Center: {x: 0, y: 6, z: 0}
+--- !u!136 &-3140285947540450502
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708103117073386689}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4
+  m_Height: 12
+  m_Direction: 1
+  m_Center: {x: 0, y: 6, z: 0}
 --- !u!1 &1752649829760236985
 GameObject:
   m_ObjectHideFlags: 0
