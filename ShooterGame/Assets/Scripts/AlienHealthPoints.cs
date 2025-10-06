@@ -11,10 +11,12 @@ public class AlienHealthPoints : MonoBehaviour
         healthPoints = initialHealthPoints;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("collision");
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("die");
             healthPoints = 0;
             if (!isDead)
             {
