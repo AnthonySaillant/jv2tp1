@@ -604,6 +604,8 @@ GameObject:
   - component: {fileID: 59118927754628869}
   - component: {fileID: 8786376107353650236}
   - component: {fileID: -3140285947540450502}
+  - component: {fileID: -157051879538750290}
+  - component: {fileID: -7720386001035133247}
   m_Layer: 0
   m_Name: SpaceMarine
   m_TagString: Player
@@ -690,6 +692,35 @@ CapsuleCollider:
   m_Height: 12
   m_Direction: 1
   m_Center: {x: 0, y: 6, z: 0}
+--- !u!114 &-157051879538750290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708103117073386689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cecbe32526eaade429aa3634fc4b4278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 50
+  bulletPool: {fileID: 0}
+  timeBetweenShots: 0.4
+--- !u!114 &-7720386001035133247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708103117073386689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dc5ce8877bda54a95676543d189765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  invincibilityDuration: 0.5
 --- !u!1 &1752649829760236985
 GameObject:
   m_ObjectHideFlags: 0
