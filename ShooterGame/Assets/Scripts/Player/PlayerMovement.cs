@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private float rotationTime = 0.1f;
     private float rotationSpeed;
 
-    private float gravity = 30f;
-    private float jumpSpeed = 12f;
+    private float gravity = 40;
+    private float jumpSpeed = 24;
     private float vecticalMovement = 0f;
 
     void Start()
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             float tempSpeed = speed;
-            if (!characterController.isGrounded) tempSpeed /= 2;
+            if (!characterController.isGrounded) tempSpeed /= 1.5f; //changer 2 pour 1.5f
 
             Vector3 directionWithCamera = (Quaternion.Euler(0f, angle, 0f) * Vector3.forward).normalized;
             float originalMovementMagnitude = direction.magnitude;

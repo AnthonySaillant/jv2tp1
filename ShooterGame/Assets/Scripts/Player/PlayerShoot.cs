@@ -32,7 +32,7 @@ public class PlayerShoot : MonoBehaviour
     private void Shoot()
     {
         Vector3 direction = -gunEnd.transform.up; //le moin pour que sa pointe devant
-        GameObject bullet = bulletPool.GetBullet();
+        GameObject bullet = bulletPool.GetBullet(); 
         bullet.transform.position = gunEnd.transform.position;
 
         Rigidbody rigidbody = bullet.GetComponent<Rigidbody>();
