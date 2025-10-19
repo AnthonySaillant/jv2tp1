@@ -23,6 +23,15 @@ public class AlienHealthPoints : MonoBehaviour
                 Die();
             }
         }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Debug.Log("die");
+            healthPoints = 0;
+            if (!isDead)
+            {
+                Die();
+            }
+        }
     }
 
     private void Die()

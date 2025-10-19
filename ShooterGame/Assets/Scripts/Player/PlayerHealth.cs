@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Alien"))
         {
@@ -46,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
         {
             GameOver();
         }
+        Debug.Log(health);
     }
 
     private IEnumerator InvincibilityCoroutine()
@@ -65,5 +66,10 @@ public class PlayerHealth : MonoBehaviour
     public bool IsGameOver()
     {
         return isGameOver;
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 }
