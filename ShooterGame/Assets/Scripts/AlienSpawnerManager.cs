@@ -5,6 +5,8 @@ public class AlienSpawner : MonoBehaviour
     [SerializeField] private AlienPool alienPool;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private float spawnRate = 3f;
+    [SerializeField] private int alienMaxQuantity = 30;
+    private int alienQuantity = 0;
 
     private float timer;
 
@@ -22,7 +24,7 @@ public class AlienSpawner : MonoBehaviour
 
     void SpawnAlien()
     {
-        if (spawnPoints.Length == 0 || alienPool == null)
+        if (spawnPoints.Length == 0 || alienPool == null || alienQuantity >= alienMaxQuantity)
             return;
 
         int index = Random.Range(0, spawnPoints.Length);
@@ -31,5 +33,12 @@ public class AlienSpawner : MonoBehaviour
         GameObject newAlien = alienPool.GetAlien();
 
         newAlien.transform.position = chosenSpawner.position;
+
+        alienQuantity++;
+    }
+
+    public void AlienDeath()
+    {
+        alienQuantity--;
     }
 }
