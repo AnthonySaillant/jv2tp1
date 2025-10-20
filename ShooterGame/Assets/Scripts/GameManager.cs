@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private TMP_Text MissileText;
     [SerializeField] private TMP_Text gameOverText;
+    [SerializeField] private TMP_Text MultiShotTimerText;
     [SerializeField] private RawImage hearthLogo;
     [SerializeField] private RawImage MissileLogo;
+    [SerializeField] private RawImage MultiShotLogo;
 
 
     void Start()
@@ -34,9 +36,11 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         hpText.gameObject.SetActive(false);
         MissileText.gameObject.SetActive(false);
+        MultiShotTimerText.gameObject.SetActive(false);
 
         hearthLogo.gameObject.SetActive(false);
         MissileLogo.gameObject.SetActive(false);
+        MultiShotLogo.gameObject.SetActive(false);
 
         Time.timeScale = 0f;
     }

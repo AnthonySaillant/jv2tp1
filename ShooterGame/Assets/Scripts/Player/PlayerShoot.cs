@@ -8,6 +8,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private float timeBetweenShots = 0.4f;
 
     private float shotTimer = 0f;
+
     private InputAction shootAction;
     private GameObject gunEnd;
 
