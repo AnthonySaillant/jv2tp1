@@ -3,11 +3,13 @@ using UnityEngine;
 public class AlienHealthPoints : MonoBehaviour
 {
     [SerializeField] private int initialHealthPoints = 1;
+    private PlayerHealth playerHealth;
     private int healthPoints;
 
     void Start()
     {
         healthPoints = initialHealthPoints;
+        playerHealth = FindFirstObjectByType<PlayerHealth>();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -31,5 +33,6 @@ public class AlienHealthPoints : MonoBehaviour
     {
         gameObject.SetActive(false);
         healthPoints = initialHealthPoints;
+        playerHealth.LoseHealth();
     }
 }
