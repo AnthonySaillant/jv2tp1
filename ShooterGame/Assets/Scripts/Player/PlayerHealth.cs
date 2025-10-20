@@ -23,10 +23,11 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Alien"))
         {
+            Debug.Log("LOSEING HEALTH");
             LoseHealth();
         }
     }
