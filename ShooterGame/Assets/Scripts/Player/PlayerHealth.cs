@@ -5,11 +5,11 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int health = 5;
     [SerializeField] private float invincibilityDuration = 0.5f;
+    [SerializeField] private GameManager gameManager;
 
 
     private Coroutine invincibilityCoroutine;
     private Rigidbody playerRigidBody;
-    private bool isGameOver = false;
     private bool isInvincible = false;
 
 
@@ -37,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
 
         health -= 1;
 
+        gameManager.UpdateHpUi(health);
+
         if (invincibilityCoroutine != null)
             StopCoroutine(invincibilityCoroutine);
 
@@ -46,7 +48,6 @@ public class PlayerHealth : MonoBehaviour
         {
             GameOver();
         }
-        Debug.Log(health);
     }
 
     private IEnumerator InvincibilityCoroutine()
@@ -60,16 +61,6 @@ public class PlayerHealth : MonoBehaviour
 
     void GameOver()
     {
-        isGameOver = !isGameOver;
-    }
-
-    public bool IsGameOver()
-    {
-        return isGameOver;
-    }
-
-    public int GetHealth()
-    {
-        return health;
+        gameManager.UpdateGameOverUi();
     }
 }

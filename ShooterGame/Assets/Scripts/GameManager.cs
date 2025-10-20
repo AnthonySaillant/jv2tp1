@@ -9,32 +9,35 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text hpText;
     [SerializeField] private TMP_Text MissileText;
     [SerializeField] private TMP_Text gameOverText;
-    [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private RawImage hearthLogo;
+    [SerializeField] private RawImage MissileLogo;
+
 
     void Start()
     {
         if (gameOverText != null)
             gameOverText.gameObject.SetActive(false);
-        hpText.text = "allo";
-        UpdateHpUi();
     }
 
     void Update()
     {
-        if (playerHealth != null)
-        {
-            UpdateHpUi();
 
-            if (playerHealth.IsGameOver() && gameOverText != null)
-            {
-                gameOverText.gameObject.SetActive(true);
-            }
-        }
     }
 
-    private void UpdateHpUi()
+    public void UpdateHpUi(int hp)
     {
-        if (hpText != null)
-            hpText.text = playerHealth.GetHealth().ToString();
+        hpText.text = hp.ToString();
+    }
+
+    public void UpdateGameOverUi()
+    {
+        gameOverText.gameObject.SetActive(true);
+        hpText.gameObject.SetActive(false);
+        MissileText.gameObject.SetActive(false);
+
+        hearthLogo.gameObject.SetActive(false);
+        MissileLogo.gameObject.SetActive(false);
+
+        Time.timeScale = 0f;
     }
 }
