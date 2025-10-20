@@ -5,11 +5,11 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int health = 5;
     [SerializeField] private float invincibilityDuration = 0.5f;
+    [SerializeField] private GameManager gameManager;
 
 
     private Coroutine invincibilityCoroutine;
     private Rigidbody playerRigidBody;
-    private bool isGameOver = false;
     private bool isInvincible = false;
 
 
@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Alien"))
         {
@@ -36,6 +36,8 @@ public class PlayerHealth : MonoBehaviour
         if (isInvincible) return;
 
         health -= 1;
+
+        gameManager.UpdateHpUi(health);
 
         if (invincibilityCoroutine != null)
             StopCoroutine(invincibilityCoroutine);
@@ -59,11 +61,6 @@ public class PlayerHealth : MonoBehaviour
 
     void GameOver()
     {
-        isGameOver = !isGameOver;
-    }
-
-    public bool IsGameOver()
-    {
-        return isGameOver;
+        gameManager.UpdateGameOverUi();
     }
 }

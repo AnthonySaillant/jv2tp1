@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GunEnd
   - Alien
+  - Bullet
   layers:
   - Default
   - TransparentFX

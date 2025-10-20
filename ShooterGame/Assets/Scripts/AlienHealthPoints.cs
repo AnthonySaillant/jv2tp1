@@ -4,7 +4,6 @@ public class AlienHealthPoints : MonoBehaviour
 {
     [SerializeField] private int initialHealthPoints = 1;
     private int healthPoints;
-    private bool isDead = false;
 
     void Start()
     {
@@ -18,16 +17,19 @@ public class AlienHealthPoints : MonoBehaviour
         {
             Debug.Log("die");
             healthPoints = 0;
-            if (!isDead)
-            {
-                Die();
-            }
+            Die();
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            Debug.Log("die");
+            healthPoints = 0;
+            Die();
         }
     }
 
     private void Die()
     {
-        isDead = true;
         gameObject.SetActive(false);
+        healthPoints = initialHealthPoints;
     }
 }
