@@ -11,11 +11,6 @@ public class Actor : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         goal = GameObject.FindGameObjectWithTag("Player");
-
-        if (navMeshAgent != null && goal != null)
-        {
-            navMeshAgent.SetDestination(goal.transform.position);
-        }
     }
 
     void Update()
@@ -28,7 +23,10 @@ public class Actor : MonoBehaviour
         }
         else
         {
-            navMeshAgent.SetDestination(goal.transform.position);
+            if (navMeshAgent.enabled == true)
+            {
+                navMeshAgent.SetDestination(goal.transform.position);
+            }
         }
     }
 }

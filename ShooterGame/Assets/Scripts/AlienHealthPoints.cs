@@ -35,11 +35,10 @@ public class AlienHealthPoints : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         gameObject.SetActive(false);
         healthPoints = initialHealthPoints;
-
         if (Random.Range(0, 3) == 0) //Un tiers de chance
         {
             Debug.Log("collectible spawn");
