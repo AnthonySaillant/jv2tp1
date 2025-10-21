@@ -8,6 +8,10 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private float stompThreshold = 0.5f;
 
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip[] spaceMarineDeathClips;
+    [SerializeField] private AudioClip spaceMarineHurtClip;
+
     private Coroutine invincibilityCoroutine;
     private Rigidbody playerRigidBody;
     private bool isInvincible = false;
@@ -17,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
     {
         playerRigidBody = GetComponent<Rigidbody>();
         gameManager.UpdateHpUi(health);
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -45,8 +49,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isInvincible) return;
 
-        health -= 1;
 
+        health -= 1;
+        audioSource.PlayOneShot(spaceMarineHurtClip);
         gameManager.UpdateHpUi(health);
 
         if (invincibilityCoroutine != null)
@@ -56,6 +61,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (health == 0)
         {
+            int index = Random.Range(0, spaceMarineDeathClips.Length);
+            audioSource.PlayOneShot(spaceMarineDeathClips[index]);
             GameOver();
         }
     }
