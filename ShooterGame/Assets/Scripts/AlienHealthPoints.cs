@@ -4,7 +4,6 @@ public class AlienHealthPoints : MonoBehaviour
 {
     [SerializeField] private int initialHealthPoints = 1;
     [SerializeField] private CollectiblePool collectiblePool;
-    private PlayerHealth playerHealth;
     private int healthPoints;
 
     void Awake()
@@ -18,7 +17,6 @@ public class AlienHealthPoints : MonoBehaviour
     void Start()
     {
         healthPoints = initialHealthPoints;
-        playerHealth = FindFirstObjectByType<PlayerHealth>();
     }
 
   
@@ -27,13 +25,11 @@ public class AlienHealthPoints : MonoBehaviour
         Debug.Log("collision");
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("die");
             healthPoints = 0;
             Die();
         }
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("die");
             healthPoints = 0;
             Die();
         }
@@ -43,7 +39,6 @@ public class AlienHealthPoints : MonoBehaviour
     {
         gameObject.SetActive(false);
         healthPoints = initialHealthPoints;
-        playerHealth.LoseHealth();
 
         if (Random.Range(0, 3) == 0) //Un tiers de chance
         {
