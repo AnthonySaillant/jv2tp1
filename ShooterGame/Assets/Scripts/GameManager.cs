@@ -36,6 +36,11 @@ public class GameManager : MonoBehaviour
         MultiShotTimerText.text = multiShotTimer.ToString("F1");
     }
 
+    public void UpdateRocketUi(int numberOfRockets)
+    {
+        MissileText.text = numberOfRockets.ToString();
+    }
+
     public void UpdateGameOverUi()
     {
         gameOverText.gameObject.SetActive(true);

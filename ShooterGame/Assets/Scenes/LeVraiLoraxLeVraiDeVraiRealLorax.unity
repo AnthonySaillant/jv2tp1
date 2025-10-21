@@ -155,6 +155,7 @@ MonoBehaviour:
   timeBetweenShots: 0.4
   multiShootDuration: 10
   gameManager: {fileID: 978841139}
+  rocketPool: {fileID: 851678968}
 --- !u!4 &3181387
 Transform:
   m_ObjectHideFlags: 0
@@ -493,7 +494,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009ab5d4dd5cc5c48966abdc19b84742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
   playerShoot: {fileID: 3181386}
 --- !u!114 &189929337
 MonoBehaviour:
@@ -1951,6 +1951,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821918453}
   m_CullTransparentMesh: 1
+--- !u!1 &851678967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 851678969}
+  - component: {fileID: 851678968}
+  m_Layer: 0
+  m_Name: RocketPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &851678968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851678967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfb13b3e84131748b2373146e01cfa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missileRedPrefab: {fileID: 2525046337550401708, guid: 19f798a9e34714c4bb756437b364b449,
+    type: 3}
+  poolSize: 10
+--- !u!4 &851678969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851678967}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.237286, y: -81.74641, z: -24.545097}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &895670657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4266474909521720955, guid: 858cc6db2feb057439ccf919e41654db,
@@ -7266,3 +7313,4 @@ SceneRoots:
   - {fileID: 1822741681}
   - {fileID: 1362456599}
   - {fileID: 3181387}
+  - {fileID: 851678969}

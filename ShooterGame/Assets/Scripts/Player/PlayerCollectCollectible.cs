@@ -3,12 +3,13 @@ using UnityEngine;
 public class PlayerCollectCollectible : MonoBehaviour
 {
     private Rigidbody rigidBody;
-    [SerializeField] private PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     [SerializeField] private PlayerShoot playerShoot;
 
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        playerHealth = GetComponentInParent<PlayerHealth>();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -22,7 +23,7 @@ public class PlayerCollectCollectible : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("RocketCollectible"))
         {
-            // rocket ammo + 5
+            playerShoot.AddRockets();
             Debug.Log("ramasse le RocketCollectible");
             collision.gameObject.SetActive(false);
         }

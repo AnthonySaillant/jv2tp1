@@ -263,6 +263,7 @@ MonoBehaviour:
   initialHealthPoints: 1
   collectiblePool: {fileID: 0}
   deathSound: {fileID: 8300000, guid: 8f252cb39a2a2da44aefd3d09599af53, type: 3}
+  chosenChances: 1
 --- !u!54 &-6337855727418119589
 Rigidbody:
   m_ObjectHideFlags: 0

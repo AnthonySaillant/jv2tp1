@@ -3,9 +3,10 @@
 public class AlienHealthPoints : MonoBehaviour
 {
     [SerializeField] private int initialHealthPoints = 1;
-    [SerializeField] private CollectiblePool collectiblePool;
     [SerializeField] private AudioClip deathSound;
 
+    private CollectiblePool collectiblePool;
+    [SerializeField] private int chosenChances;
     private int healthPoints;
 
     private AudioSource audioSource;
@@ -35,8 +36,19 @@ public class AlienHealthPoints : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            healthPoints = 0;
-            Die();
+            healthPoints--;
+            if(healthPoints < 0)
+            {
+                Die();
+            }
+        }
+        if (collision.gameObject.CompareTag("Explosion"))
+        {
+            healthPoints -= 5;
+            if (healthPoints < 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -45,7 +57,7 @@ public class AlienHealthPoints : MonoBehaviour
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
         gameObject.SetActive(false);
         healthPoints = initialHealthPoints;
-        if (Random.Range(0, 3) == 0) //Un tiers de chance
+        if (Random.Range(0, chosenChances--) == 0)
         {
             Debug.Log("collectible spawn");
             GameObject collectible = collectiblePool.GetCollectible();
