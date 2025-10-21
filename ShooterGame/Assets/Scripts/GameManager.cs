@@ -31,6 +31,11 @@ public class GameManager : MonoBehaviour
         hpText.text = hp.ToString();
     }
 
+    public void UpdateMultiShotTimerUi(float multiShotTimer)
+    {
+        MultiShotTimerText.text = multiShotTimer.ToString("F1");
+    }
+
     public void UpdateGameOverUi()
     {
         gameOverText.gameObject.SetActive(true);
