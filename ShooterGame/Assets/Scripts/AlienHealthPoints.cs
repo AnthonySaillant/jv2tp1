@@ -1,10 +1,19 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AlienHealthPoints : MonoBehaviour
 {
     [SerializeField] private int initialHealthPoints = 1;
+    [SerializeField] private CollectiblePool collectiblePool;
     private PlayerHealth playerHealth;
     private int healthPoints;
+
+    void Awake()
+    {
+        if (collectiblePool == null)
+        {
+            collectiblePool = FindAnyObjectByType<CollectiblePool>();
+        }
+    }
 
     void Start()
     {
@@ -12,6 +21,7 @@ public class AlienHealthPoints : MonoBehaviour
         playerHealth = FindFirstObjectByType<PlayerHealth>();
     }
 
+  
     private void OnTriggerEnter(Collider collision)
     {
         Debug.Log("collision");
@@ -34,5 +44,13 @@ public class AlienHealthPoints : MonoBehaviour
         gameObject.SetActive(false);
         healthPoints = initialHealthPoints;
         playerHealth.LoseHealth();
+
+        if (Random.Range(0, 3) == 0) //Un tiers de chance
+        {
+            Debug.Log("collectible spawn");
+            GameObject collectible = collectiblePool.GetCollectible();
+            collectible.transform.position = transform.position;
+            collectible.SetActive(true);
+        }
     }
 }

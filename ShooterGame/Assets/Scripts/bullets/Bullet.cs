@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
         rigidBody.angularVelocity = Vector3.zero;
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
     {
         gameObject.SetActive(false);
     }

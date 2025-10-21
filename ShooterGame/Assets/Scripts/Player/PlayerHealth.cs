@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int health = 5;
+    [SerializeField] private int health;
     [SerializeField] private float invincibilityDuration = 0.5f;
     [SerializeField] private GameManager gameManager;
 
@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody>();
+        gameManager.UpdateHpUi(health);
+
     }
 
     void Update()
@@ -51,6 +53,13 @@ public class PlayerHealth : MonoBehaviour
         {
             GameOver();
         }
+    }
+
+    public void GainHealth()
+    {
+        health += 1;
+
+        gameManager.UpdateHpUi(health);
     }
 
     private IEnumerator InvincibilityCoroutine()
