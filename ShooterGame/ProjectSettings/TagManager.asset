@@ -8,6 +8,9 @@ TagManager:
   - Alien
   - Bullet
   - Floor
+  - HealthCollectible
+  - MultiShotCollectible
+  - RocketCollectible
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - Alien
   - SpaceMarine
   - Spawner
-  - 
+  - Bullet
   - 
   - 
   - 

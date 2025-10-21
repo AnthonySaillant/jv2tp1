@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody>();
+        gameManager.UpdateHpUi(health);
+
     }
 
     void Update()
@@ -27,7 +29,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Alien"))
         {
-            Debug.Log("LOSING HEALTH");
             LoseHealth();
         }
     }
@@ -49,6 +50,13 @@ public class PlayerHealth : MonoBehaviour
         {
             GameOver();
         }
+    }
+
+    public void GainHealth()
+    {
+        health += 1;
+
+        gameManager.UpdateHpUi(health);
     }
 
     private IEnumerator InvincibilityCoroutine()
