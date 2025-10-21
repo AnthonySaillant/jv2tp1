@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int health = 5;
     [SerializeField] private float invincibilityDuration = 0.5f;
     [SerializeField] private GameManager gameManager;
-
+    [SerializeField] private float stompThreshold = 0.5f;
 
     private Coroutine invincibilityCoroutine;
     private Rigidbody playerRigidBody;
@@ -29,6 +29,14 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Alien"))
         {
+            Transform alienTransform = collision.transform;
+
+            bool isAbove = transform.position.y > alienTransform.position.y + stompThreshold;
+
+            if (isAbove)
+            {
+                return;
+            }
             LoseHealth();
         }
     }
