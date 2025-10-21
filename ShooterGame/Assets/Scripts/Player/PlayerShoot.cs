@@ -8,19 +8,25 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private float timeBetweenShots = 0.4f;
     [SerializeField] private float multiShootDuration = 10f;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private RocketPool rocketPool;
 
     private float shotTimer = 0f;
     private float multiShotTimer = 0f;
     private bool isMultiShooting = false;
     private float offsetAngle = 3f;
+    private int numberOfRockets = 0;
+    private float rocketCooldown = 2f;
+    private float rocketShotTimer = 0f;
 
     private InputAction shootAction;
+    private InputAction shootRocketAction;
     private GameObject gunEnd;
 
 
     void Start()
     {
         shootAction = InputSystem.actions.FindAction("shoot");
+        shootRocketAction = InputSystem.actions.FindAction("ShootRocket");
         gunEnd = GameObject.FindWithTag("GunEnd");
 
     }
@@ -28,8 +34,9 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         shotTimer += Time.deltaTime;
+        rocketShotTimer += Time.deltaTime;
 
-        if (shootAction.IsPressed() && shotTimer >= timeBetweenShots)
+        if (shootAction.IsPressed() && !shootRocketAction.IsPressed() && shotTimer >= timeBetweenShots)
         {
             if (isMultiShooting)
                 ShootMultiShot();
@@ -49,6 +56,13 @@ public class PlayerShoot : MonoBehaviour
             }
             gameManager.UpdateMultiShotTimerUi(multiShotTimer);
         }
+        if (numberOfRockets > 0 && shootRocketAction.IsPressed() && !shootAction.IsPressed() && rocketShotTimer >= rocketCooldown)
+        {
+            ShootRocket();
+            numberOfRockets--;
+            gameManager.UpdateRocketUi(numberOfRockets);
+            rocketShotTimer = 0f;
+        }
     }
 
     private void Shoot()
@@ -59,6 +73,17 @@ public class PlayerShoot : MonoBehaviour
         bullet.transform.position = gunEnd.transform.position;
 
         Rigidbody rigidbody = bullet.GetComponent<Rigidbody>();
+        rigidbody.linearVelocity = direction * bulletSpeed;
+    }
+
+    private void ShootRocket()
+    {
+        Vector3 direction = -gunEnd.transform.up; // le "-" pour que ça pointe vers l'avant
+
+        GameObject rocket = rocketPool.GetMissile();
+        rocket.transform.position = gunEnd.transform.position;
+
+        Rigidbody rigidbody = rocket.GetComponent<Rigidbody>();
         rigidbody.linearVelocity = direction * bulletSpeed;
     }
 
@@ -104,5 +129,10 @@ public class PlayerShoot : MonoBehaviour
             isMultiShooting = true;
             multiShotTimer = multiShootDuration;
         }
+    }
+
+    public void AddRockets()
+    {
+        numberOfRockets += 5;
     }
 }

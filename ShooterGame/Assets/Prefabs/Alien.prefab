@@ -260,6 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealthPoints: 1
+  chosenChances: 1
 --- !u!54 &-6337855727418119589
 Rigidbody:
   m_ObjectHideFlags: 0

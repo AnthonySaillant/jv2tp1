@@ -23,7 +23,7 @@ public class PlayerCollectCollectible : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("RocketCollectible"))
         {
-            // rocket ammo + 5
+            playerShoot.AddRockets();
             Debug.Log("ramasse le RocketCollectible");
             collision.gameObject.SetActive(false);
         }

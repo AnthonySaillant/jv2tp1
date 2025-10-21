@@ -31,11 +31,14 @@ public class PlayerHealth : MonoBehaviour
         {
             LoseHealth();
         }
+        if (collision.gameObject.CompareTag("Explosion"))
+        {
+            LoseHealth();
+        }
     }
 
     void LoseHealth()
     {
-        Debug.Log("negro");
         if (isInvincible) return;
 
         health -= 1;
