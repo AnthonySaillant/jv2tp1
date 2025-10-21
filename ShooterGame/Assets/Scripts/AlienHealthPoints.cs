@@ -3,9 +3,13 @@
 public class AlienHealthPoints : MonoBehaviour
 {
     [SerializeField] private int initialHealthPoints = 1;
+    [SerializeField] private AudioClip deathSound;
+
     private CollectiblePool collectiblePool;
     [SerializeField] private int chosenChances;
     private int healthPoints;
+
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -18,6 +22,7 @@ public class AlienHealthPoints : MonoBehaviour
     void Start()
     {
         healthPoints = initialHealthPoints;
+        audioSource = GetComponent<AudioSource>();
     }
 
   
@@ -49,6 +54,7 @@ public class AlienHealthPoints : MonoBehaviour
 
     public void Die()
     {
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
         gameObject.SetActive(false);
         healthPoints = initialHealthPoints;
         if (Random.Range(0, chosenChances--) == 0)

@@ -22,13 +22,17 @@ public class PlayerShoot : MonoBehaviour
     private InputAction shootRocketAction;
     private GameObject gunEnd;
 
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip bulletShotClip;
+    [SerializeField] private AudioClip tripleShootShotClip;
+
 
     void Start()
     {
         shootAction = InputSystem.actions.FindAction("shoot");
         shootRocketAction = InputSystem.actions.FindAction("ShootRocket");
         gunEnd = GameObject.FindWithTag("GunEnd");
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -39,9 +43,15 @@ public class PlayerShoot : MonoBehaviour
         if (shootAction.IsPressed() && !shootRocketAction.IsPressed() && shotTimer >= timeBetweenShots)
         {
             if (isMultiShooting)
+            {
                 ShootMultiShot();
+                audioSource.PlayOneShot(tripleShootShotClip);
+            }
             else
+            {
                 Shoot();
+                audioSource.PlayOneShot(bulletShotClip);
+            }
 
             shotTimer = 0f;
         }
