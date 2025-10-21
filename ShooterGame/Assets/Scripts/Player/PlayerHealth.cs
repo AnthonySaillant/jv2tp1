@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int health;
+    [SerializeField] private int health = 5;
     [SerializeField] private float invincibilityDuration = 0.5f;
     [SerializeField] private GameManager gameManager;
 
@@ -25,16 +25,13 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    /*
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.CompareTag("Alien"))
         {
-            Debug.Log("LOSEING HEALTH");
             LoseHealth();
         }
     }
-    */
 
     public void LoseHealth()
     {
