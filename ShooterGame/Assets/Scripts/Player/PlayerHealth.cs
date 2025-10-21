@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int health = 5;
+    [SerializeField] private int health;
     [SerializeField] private float invincibilityDuration = 0.5f;
     [SerializeField] private GameManager gameManager;
 
@@ -35,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
     void LoseHealth()
     {
+        Debug.Log("negro");
         if (isInvincible) return;
 
         health -= 1;

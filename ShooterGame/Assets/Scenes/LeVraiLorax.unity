@@ -331,53 +331,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1070597493}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &132091209
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 132091211}
-  - component: {fileID: 132091210}
-  m_Layer: 0
-  m_Name: PlayerHealth
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &132091210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132091209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69dc5ce8877bda54a95676543d189765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  invincibilityDuration: 0.5
-  gameManager: {fileID: 978841139}
---- !u!4 &132091211
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132091209}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.031067, y: -71.27308, z: -23.359274}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +481,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1690860967}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &189929327
+--- !u!114 &189929332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189929317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 009ab5d4dd5cc5c48966abdc19b84742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
+  playerShoot: {fileID: 3181386}
+--- !u!114 &189929337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -543,20 +510,6 @@ MonoBehaviour:
   health: 5
   invincibilityDuration: 0.5
   gameManager: {fileID: 978841139}
---- !u!114 &189929332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189929317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 009ab5d4dd5cc5c48966abdc19b84742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealth: {fileID: 132091210}
-  playerShoot: {fileID: 3181386}
 --- !u!1 &282840810
 GameObject:
   m_ObjectHideFlags: 0
@@ -3374,11 +3327,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1708103117073386689, guid: ca6eff04c4d17cc4dbac6c839ec16115,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 189929327}
+      addedObject: {fileID: 189929332}
     - targetCorrespondingSourceObject: {fileID: 1708103117073386689, guid: ca6eff04c4d17cc4dbac6c839ec16115,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 189929332}
+      addedObject: {fileID: 189929337}
   m_SourcePrefab: {fileID: 100100000, guid: ca6eff04c4d17cc4dbac6c839ec16115, type: 3}
 --- !u!1001 &1786101144
 PrefabInstance:
@@ -7309,7 +7262,6 @@ SceneRoots:
   - {fileID: 1447132951}
   - {fileID: 321401176}
   - {fileID: 127749580}
-  - {fileID: 132091211}
   - {fileID: 102243745}
   - {fileID: 1822741681}
   - {fileID: 1362456599}

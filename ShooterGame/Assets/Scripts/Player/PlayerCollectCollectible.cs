@@ -3,12 +3,13 @@ using UnityEngine;
 public class PlayerCollectCollectible : MonoBehaviour
 {
     private Rigidbody rigidBody;
-    [SerializeField] private PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
     [SerializeField] private PlayerShoot playerShoot;
 
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        playerHealth = GetComponentInParent<PlayerHealth>();
     }
 
     private void OnTriggerEnter(Collider collision)
