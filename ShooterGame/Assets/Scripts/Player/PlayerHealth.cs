@@ -33,7 +33,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void LoseHealth()
+    void LoseHealth()
     {
         if (isInvincible) return;
 
