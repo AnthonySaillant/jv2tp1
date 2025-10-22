@@ -19,9 +19,16 @@ public class SpawnerHealth : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Debug.Log("Spawner loses health");
             healthPoints--;
             if(healthPoints <= 0)
+            {
+                Die();
+            }
+        }
+        if (collision.gameObject.CompareTag("Explosion"))
+        {
+            healthPoints -= 5;
+            if (healthPoints <= 0)
             {
                 Die();
             }

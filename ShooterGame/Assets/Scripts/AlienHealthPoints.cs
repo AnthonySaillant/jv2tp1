@@ -4,10 +4,12 @@ public class AlienHealthPoints : MonoBehaviour
 {
     [SerializeField] private int initialHealthPoints = 1;
     [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip spawnCollectible;
 
     private CollectiblePool collectiblePool;
     [SerializeField] private int chosenChances;
     private int healthPoints;
+    private AlienSpawner spawnerManager;
 
     private AudioSource audioSource;
 
@@ -16,6 +18,12 @@ public class AlienHealthPoints : MonoBehaviour
         if (collectiblePool == null)
         {
             collectiblePool = FindAnyObjectByType<CollectiblePool>();
+        }
+
+        GameObject alienManager = GameObject.Find("AlienManager");
+        if (alienManager != null)
+        {
+            spawnerManager = alienManager.GetComponent<AlienSpawner>();
         }
     }
 
@@ -28,7 +36,6 @@ public class AlienHealthPoints : MonoBehaviour
   
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("collision");
         if (collision.gameObject.CompareTag("Player"))
         {
             healthPoints = 0;
@@ -57,12 +64,13 @@ public class AlienHealthPoints : MonoBehaviour
         AudioSource.PlayClipAtPoint(deathSound, transform.position);
         gameObject.SetActive(false);
         healthPoints = initialHealthPoints;
+        spawnerManager.AlienDeath();
         if (Random.Range(0, chosenChances--) == 0)
         {
-            Debug.Log("collectible spawn");
             GameObject collectible = collectiblePool.GetCollectible();
             collectible.transform.position = transform.position;
             collectible.SetActive(true);
+            AudioSource.PlayClipAtPoint(spawnCollectible, transform.position);
         }
     }
 }

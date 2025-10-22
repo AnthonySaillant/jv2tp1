@@ -261,9 +261,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealthPoints: 1
-  collectiblePool: {fileID: 0}
   deathSound: {fileID: 8300000, guid: 8f252cb39a2a2da44aefd3d09599af53, type: 3}
-  chosenChances: 1
+  spawnCollectible: {fileID: 8300000, guid: 00f25f135ee488c4591479876ca3f10c, type: 3}
+  chosenChances: 5
 --- !u!54 &-6337855727418119589
 Rigidbody:
   m_ObjectHideFlags: 0

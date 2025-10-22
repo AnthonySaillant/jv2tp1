@@ -63,7 +63,7 @@ public class PlayerHealth : MonoBehaviour
 
         invincibilityCoroutine = StartCoroutine(InvincibilityCoroutine());
 
-        if (health == 0)
+        if (health <= 0)
         {
             int index = Random.Range(0, spaceMarineDeathClips.Length);
             audioSource.PlayOneShot(spaceMarineDeathClips[index]);

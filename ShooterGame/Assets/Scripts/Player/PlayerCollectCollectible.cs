@@ -6,10 +6,14 @@ public class PlayerCollectCollectible : MonoBehaviour
     private PlayerHealth playerHealth;
     [SerializeField] private PlayerShoot playerShoot;
 
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip collectCollectible;
+
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
         playerHealth = GetComponentInParent<PlayerHealth>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -18,20 +22,20 @@ public class PlayerCollectCollectible : MonoBehaviour
         if (collision.gameObject.CompareTag("HealthCollectible"))
         {
             playerHealth.GainHealth();
-            Debug.Log("ramasse le healthBonus");
             collision.gameObject.SetActive(false);
+            audioSource.PlayOneShot(collectCollectible);
         }
         if (collision.gameObject.CompareTag("RocketCollectible"))
         {
             playerShoot.AddRockets();
-            Debug.Log("ramasse le RocketCollectible");
             collision.gameObject.SetActive(false);
+            audioSource.PlayOneShot(collectCollectible);
         }
         if (collision.gameObject.CompareTag("MultiShotCollectible"))
         {
             playerShoot.ActivateMultishooting();
-            Debug.Log("ramasse le MultiShotCollectible");
             collision.gameObject.SetActive(false);
+            audioSource.PlayOneShot(collectCollectible);
         }
     }
 }

@@ -6,7 +6,9 @@ public class AlienSpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private float spawnRate = 3f;
     [SerializeField] private int alienMaxQuantity = 30;
+    [SerializeField] private GameManager gameManager;
 
+    private int activeSpawners ;
     private int alienQuantity = 0;
     private float timer;
 
@@ -19,6 +21,11 @@ public class AlienSpawner : MonoBehaviour
             SpawnAlien();
             timer = 0f;
         }
+        var activeSpawners = System.Array.FindAll(spawnPoints, spawner => spawner != null && spawner.gameObject.activeInHierarchy);
+        if (activeSpawners.Length == 0)
+        {
+            gameManager.UpdateVictoryUi();
+        }
     }
 
     void SpawnAlien()
@@ -26,35 +33,24 @@ public class AlienSpawner : MonoBehaviour
         if (spawnPoints.Length == 0 || alienPool == null || alienQuantity >= alienMaxQuantity)
             return;
 
-        // Filter only active spawners
         var activeSpawners = System.Array.FindAll(spawnPoints, spawner => spawner != null && spawner.gameObject.activeInHierarchy);
 
         if (activeSpawners.Length == 0)
         {
-            Debug.LogWarning("No active spawners available!");
             return;
         }
 
-        // Pick a random active spawner
         int index = Random.Range(0, activeSpawners.Length);
         Transform chosenSpawner = activeSpawners[index];
 
         GameObject newAlien = alienPool.GetAlien();
 
-        if (newAlien == null)
-        {
-            Debug.LogWarning("AlienPool returned null — possibly empty pool.");
-            return;
-        }
-
         newAlien.transform.position = chosenSpawner.position;
         alienQuantity++;
-
-        Debug.Log($"Alien spawned at: {chosenSpawner.name}");
     }
 
     public void AlienDeath()
     {
-        alienQuantity = Mathf.Max(0, alienQuantity - 1);
+        alienQuantity--;
     }
 }

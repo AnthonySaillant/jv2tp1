@@ -25,6 +25,7 @@ public class PlayerShoot : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip bulletShotClip;
     [SerializeField] private AudioClip tripleShootShotClip;
+    [SerializeField] private AudioClip rocketShotClip;
 
 
     void Start()
@@ -70,9 +71,10 @@ public class PlayerShoot : MonoBehaviour
         {
             ShootRocket();
             numberOfRockets--;
-            gameManager.UpdateRocketUi(numberOfRockets);
             rocketShotTimer = 0f;
+            audioSource.PlayOneShot(rocketShotClip);
         }
+        gameManager.UpdateRocketUi(numberOfRockets);
     }
 
     private void Shoot()
@@ -106,7 +108,6 @@ public class PlayerShoot : MonoBehaviour
 
     private void ShootRight()
     {
-        Debug.Log("shooting right");
         Vector3 direction = -gunEnd.transform.up;
 
         GameObject bulletRight = bulletPool.GetBullet();
@@ -118,7 +119,6 @@ public class PlayerShoot : MonoBehaviour
 
     private void ShootLeft()
     {
-        Debug.Log("shooting left");
         Vector3 direction = -gunEnd.transform.up;
 
         GameObject bulletLeft = bulletPool.GetBullet();
